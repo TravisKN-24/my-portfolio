@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travis - About</title>
+    <!-- Include Devicon for programming language logos -->
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar ul li {
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li:hover {
+            color: #00ff88;
+        }
+
+        .navbar ul li.active {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 120px 50px 50px 50px;
+            background: #2c2c2c;
+        }
+
+        .intro-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .intro-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .intro-container p {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .intro-container p span {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Line Splitter */
+        .line-splitter {
+            width: 80%;
+            height: 2px;
+            background: #00ff88;
+            margin: 50px auto;
+            opacity: 0;
+            transform: scaleX(0);
+            animation: scaleIn 0.5s forwards 0.5s;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+        }
+
+        .skills-container h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.7s;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .skill-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .skill-card i {
+            font-size: 40px;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        /* Core Competencies Section */
+        .competencies-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        .competencies-container h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.9s;
+        }
+
+        .competencies-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .competency-item {
+            background: #3a3a3a;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            color: #ccc;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .competency-item.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            width: 100%;
+        }
+
+        .footer p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 100px 20px 20px 20px;
+            }
+
+            .intro-container h2,
+            .skills-container h2,
+            .competencies-container h2 {
+                font-size: 28px;
+            }
+
+            .intro-container p {
+                font-size: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .skill-card i {
+                font-size: 30px;
+            }
+
+            .skill-card p {
+                font-size: 14px;
+            }
+
+            .competency-item {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .navbar ul {
+                gap: 15px;
+            }
+
+            .navbar .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.webp" alt="TKN Logo"></a>
+        </div>
+        <ul>
+            <li data-page="index.html" onclick="window.location.href='index.html'">Home</li>
+            <li data-page="projects.html" onclick="window.location.href='projects.html'">Projects</li>
+            <li data-page="about.html" onclick="window.location.href='about.html'">About</li>
+            <li data-page="contacts.html" onclick="window.location.href='contacts.html'">Contacts</li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <!-- Introduction -->
+        <div class="intro-container">
+            <h2>About Me</h2>
+            <p>Hi, I’m <span>Travis</span>, a passionate student pursuing a degree in IT at <span>Richfield Graduate Institute of Technology</span>. I’m currently honing my skills in creating modern, responsive, and user-friendly websites that bring ideas to life.</p>
+            <p>I’m studying web development as part of my IT degree, working on exciting projects like games and dynamic platforms, constantly learning and exploring new technologies to enhance my craft.</p>
+            <p>My passion lies in building innovative solutions that make a difference. My goal is to become a skilled web developer, contribute to impactful projects, and eventually work on cutting-edge technologies that push the boundaries of what’s possible on the web.</p>
+        </div>
+
+        <!-- Line Splitter -->
+        <div class="line-splitter"></div>
+
+        <!-- Skills -->
+        <div class="skills-container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="devicon-html5-plain"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-css3-plain"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-javascript-plain"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-csharp-plain"></i>
+                    <p>C#</p>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-react-original"></i>
+                    <p>React</p>
+                </div>
+                <div class="skill-card">
+                    <i class="devicon-java-plain"></i>
+                    <p>Java</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Splitter -->
+        <div class="line-splitter"></div>
+
+        <!-- Core Competencies -->
+        <div class="competencies-container">
+            <h2>Core Competencies</h2>
+            <div class="competencies-list">
+                <div class="competency-item">Problem Solver</div>
+                <div class="competency-item">Teamwork</div>
+                <div class="competency-item">Quick Learner</div>
+                <div class="competency-item">Creative Thinker</div>
+                <div class="competency-item">Attention to Detail</div>
+                <div class="competency-item">Adaptability</div>
+                <div class="competency-item">AI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Travis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Highlight the active navbar item based on the current page
+        window.onload = () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = document.querySelectorAll('.navbar ul li');
+            navItems.forEach(item => {
+                if (item.getAttribute('data-page') === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Animate skill cards on scroll
+            const skillCards = document.querySelectorAll('.skill-card');
+            skillCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, index * 200);
+            });
+
+            // Animate competency items on scroll
+            const competencyItems = document.querySelectorAll('.competency-item');
+            competencyItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 200);
+            });
+        };
+    </script>
+</body>
+</html>

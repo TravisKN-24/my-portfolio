@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travis - Web Developer Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar ul li {
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li:hover {
+            color: #00ff88;
+        }
+
+        .navbar ul li.active {
+            color: #00ff88; /* Highlight active page with green */
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            padding: 0 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 span {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .hero-content button {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-content button:hover {
+            background: #00ff88;
+            color: #1a1a1a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            width: 100%;
+        }
+
+        .footer p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .navbar ul {
+                gap: 15px;
+            }
+
+            .navbar .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.webp" alt="TKN Logo"></a>
+        </div>
+        <ul>
+            <li data-page="index.html" onclick="window.location.href='index.html'">Home</li>
+            <li data-page="projects.html" onclick="window.location.href='projects.html'">Projects</li>
+            <li data-page="about.html" onclick="window.location.href='about.html'">About</li>
+            <li data-page="contacts.html" onclick="window.location.href='contacts.html'">Contacts</li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>HI, I'M TRAVIS<br><span>I'M A WEB DEVELOPER</span></h1>
+            <p>I'm a passionate student learning web development, creating modern and responsive websites. Let's build something amazing together!</p>
+            <button onclick="window.location.href='projects.html'">VIEW MY PROJECTS</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Travis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Highlight the active navbar item based on the current page
+        window.onload = () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = document.querySelectorAll('.navbar ul li');
+            navItems.forEach(item => {
+                if (item.getAttribute('data-page') === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travis - Projects</title>
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar ul li {
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li:hover {
+            color: #00ff88;
+        }
+
+        .navbar ul li.active {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 120px 50px 50px 50px;
+            min-height: 100vh;
+            background: #2c2c2c;
+        }
+
+        .projects-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .project-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-card .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 24px;
+            color: #00ff88;
+        }
+
+        .project-card .download-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card .download-btn:hover {
+            background: #00ff88;
+            color: #1a1a1a;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #ccc;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            width: 100%;
+        }
+
+        .footer p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-section {
+                padding: 100px 20px 20px 20px;
+            }
+
+            .projects-section h2 {
+                font-size: 28px;
+            }
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .navbar ul {
+                gap: 15px;
+            }
+
+            .navbar .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.webp" alt="TKN Logo"></a>
+        </div>
+        <ul>
+            <li data-page="index.html" onclick="window.location.href='index.html'">Home</li>
+            <li data-page="projects.html" onclick="window.location.href='projects.html'">Projects</li>
+            <li data-page="about.html" onclick="window.location.href='about.html'">About</li>
+            <li data-page="contacts.html" onclick="window.location.href='contacts.html'">Contacts</li>
+        </ul>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Infinite Tic Tac Toe</h3>
+                    <a href="downloads/infinite-tic-tac-toe.zip" class="download-btn">Download</a>
+                </div>
+                <img src="images/infinite-tic-tac-toe.png" alt="Infinite Tic Tac Toe">
+                <p>A dynamic twist on the classic game, Infinite Tic Tac Toe allows players to continue playing on an ever-expanding grid. Built with HTML, CSS, and JavaScript, it features a responsive design and win detection across the infinite board.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Pac-man</h3>
+                    <a href="downloads/Pacman.zip" class="download-btn">Download</a>
+                </div>
+                <img src="images/pacman.png" alt="Project 2">
+                <p>A modern recreation of the classic Pac-Man game, this project brings the nostalgic arcade experience to the web. Players control the character using arrow keys, holding them down for continuous movement through the maze while collecting dots and avoiding ghosts. Built with HTML, CSS, and JavaScript, the game features a responsive design, smooth animations, and core mechanics like scoring and collision detection.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Filmlane Master (Front-End only)</h3>
+                    <a href="downloads/filmlane-master-main.zip" class="download-btn">Download</a>
+                </div>
+                <img src="images/filmlane-master.png" alt="Project 3">
+                <p>A sleek and user-friendly movie and series platform, FilmLane-Master allows users to browse, download, and watch their favorite films and shows. Built with HTML, CSS, and JavaScript, the site features a responsive design, an intuitive interface, and dynamic content loading. Users can explore a curated library, access detailed information about each title, and download content for offline viewing, all wrapped in a modern and visually appealing layout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Travis. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Highlight the active navbar item based on the current page
+        window.onload = () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = document.querySelectorAll('.navbar ul li');
+            navItems.forEach(item => {
+                if (item.getAttribute('data-page') === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Animate project cards on page load
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, index * 200);
+            });
+        };
+    </script>
+</body>
+</html>
